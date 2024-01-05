@@ -111,6 +111,23 @@ Go to your /search-project-backend-rails folder:
 
 ### Usage
 
+1. Once the setup is complete, ensure you are still in the directory containing the Ultimate Booking bites file files.
+
+2. To set up the database and seed initial data, run the following commands:
+
+```
+rails db:create
+rails db:migrate
+```
+
+This will create the database and apply migrations.
+
+If you want to populate the database you can run (this step is not required):
+
+```
+rails db:seed
+```
+
 ```sh
   rails server
 ```
