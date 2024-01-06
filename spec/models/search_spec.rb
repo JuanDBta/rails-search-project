@@ -11,12 +11,12 @@ RSpec.describe Search, type: :model do
   it 'rejects searches with less than two spaces in the query' do
     should_not = Search.new(query: 'Invalid search', ip_address: '127.0.0.1')
     expect(should_not).not_to be_valid
-    expect(should_not.errors[:query]).to include("Please make a valid search")
+    expect(should_not.errors[:query]).to include('Please make a valid search')
   end
 
   it 'validates that the length of :query is at least 7' do
     should_not = Search.new(query: 'Invalid', ip_address: '127.0.0.1')
     expect(should_not).not_to be_valid
-    expect(should_not.errors[:query]).to include("Please make a valid search")
+    expect(should_not.errors[:query]).to include('Please make a valid search')
   end
 end
