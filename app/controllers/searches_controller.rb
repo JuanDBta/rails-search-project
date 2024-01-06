@@ -8,8 +8,7 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = Search.new(search_params)
-    @search.ip_address = user_ip
+    @search = @user.searches.build(search_params)
 
     if search_complete?(@search.query) && @search.save
       render json: @search, status: :created
@@ -21,19 +20,15 @@ class SearchesController < ApplicationController
   private
 
   def find_user
-    @user = User.find_by(ip_address: params[:ip_address])
+    @user = User.find_or_create_by(ip_address: params[:ip_address])
     render json: { error: "User not found" }, status: :not_found unless @user
   end
 
   def search_params
-    params.require(:search).permit(:query, :ip_address)
+    params.require(:search).permit(:query)
   end
 
   def search_complete?(query)
     query.length > 7
-  end
-
-  def user_ip
-    request.remote_ip
   end
 end
