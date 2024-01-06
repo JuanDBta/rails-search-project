@@ -16,7 +16,7 @@ class SearchesController < ApplicationController
       render json: { error: "Invalid search" }, status: :unprocessable_entity
     end
   end
-
+  
   private
 
   def find_user

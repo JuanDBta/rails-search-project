@@ -1,12 +1,10 @@
 # app/models/search.rb
 class Search < ApplicationRecord
-  belongs_to :user, foreign_key: :ip_address_id
+  belongs_to :user, foreign_key: :user_id
 
   validates :query, presence: true, length: { minimum: 7, message: 'Please make a valid search' }
 
   validate :valid_search
-
-  validates :ip_address, presence: true
 
   private
 

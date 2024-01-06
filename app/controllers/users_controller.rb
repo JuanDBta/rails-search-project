@@ -5,8 +5,10 @@ class UsersController < ApplicationController
 
     if @user.save
       render json: { message: "User created successfully" }, status: :created
+      
     else
       render json: { error: "Unable to create user", details: @user.errors.full_messages }, status: :unprocessable_entity
+      
     end
   end
 
