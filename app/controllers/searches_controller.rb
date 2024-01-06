@@ -13,15 +13,15 @@ class SearchesController < ApplicationController
     if search_complete?(@search.query) && @search.save
       render json: @search, status: :created
     else
-      render json: { error: "Invalid search" }, status: :unprocessable_entity
+      render json: { error: 'Invalid search' }, status: :unprocessable_entity
     end
   end
-  
+
   private
 
   def find_user
     @user = User.find_by(id: params[:user_id])
-    render json: { error: "User not found" }, status: :not_found unless @user
+    render json: { error: 'User not found' }, status: :not_found unless @user
   end
 
   def search_params
