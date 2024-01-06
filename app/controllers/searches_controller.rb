@@ -8,7 +8,7 @@ class SearchesController < ApplicationController
   end
 
   def create
-    @search = @user.searches.build(search_params)
+    @search = Search.new(search_params)
 
     if search_complete?(@search.query) && @search.save
       render json: @search, status: :created
@@ -20,12 +20,12 @@ class SearchesController < ApplicationController
   private
 
   def find_user
-    @user = User.find_or_create_by(ip_address: params[:ip_address])
+    @user = User.find_by(id: params[:user_id])
     render json: { error: "User not found" }, status: :not_found unless @user
   end
 
   def search_params
-    params.require(:search).permit(:query)
+    params.require(:search).permit(:query).merge(user_id: @user.id)
   end
 
   def search_complete?(query)

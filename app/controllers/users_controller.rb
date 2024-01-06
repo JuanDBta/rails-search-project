@@ -9,4 +9,9 @@ class UsersController < ApplicationController
       render json: { error: "Unable to create user", details: @user.errors.full_messages }, status: :unprocessable_entity
     end
   end
+
+  def index
+    @users = User.all
+    render json: @users, status: :ok
+  end
 end
