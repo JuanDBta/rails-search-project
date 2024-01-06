@@ -5,6 +5,7 @@ class SearchesController < ApplicationController
     @search = @user.searches.new(search_params)
 
     if @search.save
+      @user_searches = @user.searches
       render json: @search, status: :created
     else
       render json: { error: 'Unable to save search' }, status: :unprocessable_entity
