@@ -4,9 +4,7 @@
 
 <h1><b>Helpjuice Test Project: Realtime Search Box</b></h1>
  
-
 </div>
-
 
 # 📗 Table of Contents
 
@@ -19,6 +17,7 @@
   - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
+  - [Run Tests](#tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -79,6 +78,12 @@ Here is the link to my [Search Project Vanilla JS Frontend App](https://github.c
 - **[Created users and searches controllers]**
 - **[Set routes]**
 - **[Created API endpoint GET and POST]**
+- **[Added API GET endpoint to show recent searches]**
+- **[Added API GET endpoint to count searches]**
+- **[Added API GET endpoint to show favorite word in searches]**
+- **[Added API GET endpoint to show average of words per search]**
+- **[Added Rspec test to models]**
+- **[Implemented deployment in render]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -133,6 +138,14 @@ rails db:seed
 
 ```sh
   rails server
+```
+### Run Tests
+
+Go to your /search-project-backend-rails folder:
+
+```sh
+  cd search-project-backend-rails
+  rspec
 ```
 
 ## 👥 Authors <a name="authors"></a>

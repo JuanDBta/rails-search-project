@@ -4,9 +4,9 @@ RSpec.describe 'Searches', type: :request do
   include FactoryBot::Syntax::Methods
   let(:user) { create(:user) }
 
-  describe 'GET /users/:user_id/searches' do
+  describe 'GET /show_searches' do
     it 'returns http success' do
-      get "/users/#{user.id}/searches"
+      get '/show_searches'
       expect(response).to have_http_status(:success)
     end
   end

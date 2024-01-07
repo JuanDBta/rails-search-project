@@ -45,4 +45,38 @@ class UsersController < ApplicationController
       render json: { error: 'User not found' }, status: :not_found
     end
   end
+
+  def favorite_word
+    ip_address = request.remote_ip
+    user = User.find_by(ip_address:)
+
+    if user
+      searches = user.searches.pluck(:query).join(' ').downcase.split(/\W+/)
+      filtered_words = searches.select { |word| word.length > 3 }
+
+      word_frequency = filtered_words.tally
+      most_frequent_word = word_frequency.max_by { |_word, frequency| frequency }&.first
+
+      render json: { most_frequent_word: }, status: :ok
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
+  def average_words_per_search
+    ip_address = request.remote_ip
+    user = User.find_by(ip_address:)
+
+    if user
+      searches = user.searches.pluck(:query)
+      total_words = searches.map { |search| search.downcase.split(/\W+/).length }.sum
+      total_searches = searches.length
+
+      average_words = total_searches.positive? ? total_words.to_f / total_searches : 0
+
+      render json: { average_words_per_search: average_words }, status: :ok
+    else
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
 end

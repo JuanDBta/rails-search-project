@@ -2,5 +2,5 @@
 class User < ApplicationRecord
   has_many :searches, foreign_key: :user_id, dependent: :destroy
 
-  validates :ip_address, presence: true, uniqueness: true
+  validates :ip_address, presence: true, uniqueness: { case_sensitive: false }
 end
