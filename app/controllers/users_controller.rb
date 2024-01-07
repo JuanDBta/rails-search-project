@@ -1,14 +1,14 @@
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  def create
-    @user = User.new(ip_address: request.remote_ip)
+  before_action :extract_three_octets, only: [:create, :index, :show, :show_searches, :count_searches, :favorite_word, :average_words_per_search]
 
+  def create
+    @user = User.new(ip_address: @three_octets)
+    
     if @user.save
       render json: { message: 'User created successfully' }, status: :created
-
     else
       render json: { error: 'Unable to create user', details: @user.errors.full_messages }, status: :unprocessable_entity
-
     end
   end
 
@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show_searches
-    ip_address = request.remote_ip
-    user = User.find_by(ip_address:)
+    user = User.find_by(ip_address: @three_octets)
 
     if user
       searches = user.searches.order(created_at: :desc).limit(15)
@@ -35,20 +34,18 @@ class UsersController < ApplicationController
   end
 
   def count_searches
-    ip_address = request.remote_ip
-    user = User.find_by(ip_address:)
+    user = User.find_by(ip_address: @three_octets)
 
     if user
       searches_count = user.searches.count
-      render json: { searches_count: }, status: :ok
+      render json: { searches_count: searches_count }, status: :ok
     else
       render json: { error: 'User not found' }, status: :not_found
     end
   end
 
   def favorite_word
-    ip_address = request.remote_ip
-    user = User.find_by(ip_address:)
+    user = User.find_by(ip_address: @three_octets)
 
     if user
       searches = user.searches.pluck(:query).join(' ').downcase.split(/\W+/)
@@ -57,15 +54,14 @@ class UsersController < ApplicationController
       word_frequency = filtered_words.tally
       most_frequent_word = word_frequency.max_by { |_word, frequency| frequency }&.first
 
-      render json: { most_frequent_word: }, status: :ok
+      render json: { most_frequent_word: most_frequent_word }, status: :ok
     else
       render json: { error: 'User not found' }, status: :not_found
     end
   end
 
   def average_words_per_search
-    ip_address = request.remote_ip
-    user = User.find_by(ip_address:)
+    user = User.find_by(ip_address: @three_octets)
 
     if user
       searches = user.searches.pluck(:query)
@@ -78,5 +74,11 @@ class UsersController < ApplicationController
     else
       render json: { error: 'User not found' }, status: :not_found
     end
+  end
+
+  private
+
+  def extract_three_octets
+    @three_octets = request.remote_ip.split('.')[0, 3].join('.')
   end
 end
