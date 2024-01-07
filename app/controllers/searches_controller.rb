@@ -1,7 +1,9 @@
 # app/controllers/searches_controller.rb
 class SearchesController < ApplicationController
+  before_action :extract_three_octets, only: [:create]
+
   def create
-    @user = User.find_or_create_by(ip_address: request.remote_ip)
+    @user = User.find_or_create_by(ip_address: @three_octets)
     @search = @user.searches.new(search_params)
 
     if @search.save
@@ -16,5 +18,9 @@ class SearchesController < ApplicationController
 
   def search_params
     params.require(:search).permit(:query)
+  end
+
+  def extract_three_octets
+    @three_octets = request.remote_ip.split('.')[0, 3].join('.')
   end
 end
