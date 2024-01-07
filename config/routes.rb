@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
 
   get 'show_searches', to: 'users#show_searches'
+  get 'count_searches', to: 'users#count_searches'
 
   resources :searches, only: [:create, :index], on: :collection
 end

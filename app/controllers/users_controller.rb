@@ -23,18 +23,26 @@ class UsersController < ApplicationController
   end
 
   def show_searches
-    # Capturar la ip_address de la solicitud
     ip_address = request.remote_ip
-
-    # Buscar el user_id asociado a la ip_address
-    user = User.find_by(ip_address:)
-
+    user = User.find_by(ip_address: ip_address)
+  
     if user
-      # Obtener todas las búsquedas asociadas al user_id encontrado
-      searches = user.searches
+      searches = user.searches.order(created_at: :desc).limit(15)
       render json: searches
     else
-      render json: { error: 'Usuario no encontrado' }, status: :not_found
+      render json: { error: 'User not found' }, status: :not_found
+    end
+  end
+
+  def count_searches
+    ip_address = request.remote_ip
+    user = User.find_by(ip_address: ip_address)
+
+    if user
+      searches_count = user.searches.count
+      render json: { searches_count: searches_count }, status: :ok
+    else
+      render json: { error: 'User not found' }, status: :not_found
     end
   end
 end
