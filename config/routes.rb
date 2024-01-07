@@ -8,8 +8,6 @@ Rails.application.routes.draw do
   get 'favorite_word', to: 'users#favorite_word'
   get 'average_words_per_search', to: 'users#average_words_per_search'
 
-  average_words_per_search
-
   resources :searches, only: [:create, :index], on: :collection
 end
 
