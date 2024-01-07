@@ -24,8 +24,8 @@ class UsersController < ApplicationController
 
   def show_searches
     ip_address = request.remote_ip
-    user = User.find_by(ip_address: ip_address)
-  
+    user = User.find_by(ip_address:)
+
     if user
       searches = user.searches.order(created_at: :desc).limit(15)
       render json: searches
@@ -36,11 +36,11 @@ class UsersController < ApplicationController
 
   def count_searches
     ip_address = request.remote_ip
-    user = User.find_by(ip_address: ip_address)
+    user = User.find_by(ip_address:)
 
     if user
       searches_count = user.searches.count
-      render json: { searches_count: searches_count }, status: :ok
+      render json: { searches_count: }, status: :ok
     else
       render json: { error: 'User not found' }, status: :not_found
     end

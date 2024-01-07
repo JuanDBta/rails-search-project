@@ -7,8 +7,8 @@ RSpec.describe Search, type: :model do
 
     it 'requires at least two spaces and three words in the query' do
       user = User.create(ip_address: '127.0.0.1')
-      valid_search = Search.new(query: 'Valid search with three words', user: user)
-      invalid_search = Search.new(query: 'Invalid search', user: user)
+      valid_search = Search.new(query: 'Valid search with three words', user:)
+      invalid_search = Search.new(query: 'Invalid search', user:)
 
       expect(valid_search).to be_valid
       expect(invalid_search).not_to be_valid
@@ -17,8 +17,8 @@ RSpec.describe Search, type: :model do
 
     it 'validates that the length of :query is at least 7' do
       user = User.create(ip_address: '127.0.0.1')
-      valid_search = Search.new(query: 'Valid query', user: user)
-      invalid_search = Search.new(query: 'Short', user: user)
+      valid_search = Search.new(query: 'Valid query', user:)
+      invalid_search = Search.new(query: 'Short', user:)
 
       expect(valid_search).to be_valid
       expect(invalid_search).not_to be_valid
