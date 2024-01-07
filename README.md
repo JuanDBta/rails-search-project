@@ -19,6 +19,7 @@
   - [Setup](#setup)
   - [Install](#install)
   - [Usage](#usage)
+  - [Run Tests](#tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -79,6 +80,9 @@ Here is the link to my [Search Project Vanilla JS Frontend App](https://github.c
 - **[Created users and searches controllers]**
 - **[Set routes]**
 - **[Created API endpoint GET and POST]**
+- **[Added API GET endpoint to show recent searches]**
+- **[Added API GET endpoint to count searches]**
+- **[Added Rspec test to models]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -134,6 +138,15 @@ rails db:seed
 ```sh
   rails server
 ```
+### Run Tests
+
+Go to your /search-project-backend-rails folder:
+
+```sh
+  cd search-project-backend-rails
+  rspec
+```
+
 
 ## 👥 Authors <a name="authors"></a>
 
