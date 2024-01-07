@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: search_project_production
-  username: search_project
-  password: <%= ENV["SEARCH_PROJECT_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
