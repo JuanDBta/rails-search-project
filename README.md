@@ -4,9 +4,7 @@
 
 <h1><b>Helpjuice Test Project: Realtime Search Box</b></h1>
  
-
 </div>
-
 
 # 📗 Table of Contents
 
@@ -82,7 +80,10 @@ Here is the link to my [Search Project Vanilla JS Frontend App](https://github.c
 - **[Created API endpoint GET and POST]**
 - **[Added API GET endpoint to show recent searches]**
 - **[Added API GET endpoint to count searches]**
+- **[Added API GET endpoint to show favorite word in searches]**
+- **[Added API GET endpoint to show average of words per search]**
 - **[Added Rspec test to models]**
+- **[Implemented deployment in render]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
