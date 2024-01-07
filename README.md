@@ -75,7 +75,10 @@ Here is the link to my [Search Project Vanilla JS Frontend App](https://github.c
 
 - **[Set up the repository and tools]**
 - **[Setup RAILS APP]**
-- **[Created API endpoint]**
+- **[Created user and search models]**
+- **[Created users and searches controllers]**
+- **[Set routes]**
+- **[Created API endpoint GET and POST]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
