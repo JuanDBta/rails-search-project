@@ -1,6 +1,6 @@
 # app/controllers/users_controller.rb
 class UsersController < ApplicationController
-  before_action :extract_three_octets, only: [:create, :index, :show, :show_searches, :count_searches, :favorite_word, :average_words_per_search]
+  before_action :capture_and_extract_octets, only: [:create, :index, :show, :show_searches, :count_searches, :favorite_word, :average_words_per_search]
 
   def create
     @user = User.new(ip_address: @three_octets)
@@ -78,7 +78,8 @@ class UsersController < ApplicationController
 
   private
 
-  def extract_three_octets
-    @three_octets = request.remote_ip.split('.')[0, 3].join('.')
+  def capture_and_extract_octets
+    full_ip = request.remote_ip
+    @three_octets = full_ip.split('.')[0, 3].join('.')
   end
 end
