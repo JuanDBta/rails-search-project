@@ -147,7 +147,6 @@ Go to your /search-project-backend-rails folder:
   rspec
 ```
 
-
 ## 👥 Authors <a name="authors"></a>
 
 👤 **JUAN DAVID DIAZ**
