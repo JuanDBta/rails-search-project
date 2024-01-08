@@ -12,6 +12,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
+- [🚀 Live Demo](#live-demo)
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -29,8 +30,10 @@
 # 📖 [Helpjuice Test Project: Realtime Search Box] <a name="about-project"></a>
 Rails backend API powers our Realtime Search Analytics. It seamlessly handles user searches, IP tracking, and data analytics. Efficient, scalable, and privacy-focused.
 
-Here is the link to my [Search Project Vanilla JS Frontend App](https://github.com/JuanDBta/search-project-frontend-vanillajs)
+Here is the link to the Front End Source [Search Project Vanilla JS Frontend Source](https://github.com/JuanDBta/search-project-frontend-vanillajs)
 
+Here is the Live link: 
+[Realtime Search Box](https://search-project.onrender.com/)
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -84,6 +87,14 @@ Here is the link to my [Search Project Vanilla JS Frontend App](https://github.c
 - **[Added API GET endpoint to show average of words per search]**
 - **[Added Rspec test to models]**
 - **[Implemented deployment in render]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+Please, try my app:
+
+<a href="https://search-project.onrender.com/">Helpjuice Test Project: Realtime Search Box</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
