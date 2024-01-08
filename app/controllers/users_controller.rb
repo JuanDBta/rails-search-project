@@ -68,7 +68,7 @@ class UsersController < ApplicationController
       total_words = searches.map { |search| search.downcase.split(/\W+/).length }.sum
       total_searches = searches.length
 
-      average_words = total_searches.positive? ? total_words.to_f / total_searches : 0
+      average_words = total_searches.positive? ? (total_words.to_f / total_searches).round(1) : 0
 
       render json: { average_words_per_search: average_words }, status: :ok
     else
